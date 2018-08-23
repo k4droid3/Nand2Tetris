@@ -18,9 +18,6 @@ CHIP PC {
     PARTS:
     // Put your code here:
 
-    Or(a=load, b=inc, out=o1);
-    Or(a=o1, b=reset, out=registerLoad);
-
     Inc16(in=loop, out=increment);
     Mux16(a=loop, b=increment, sel=inc, out=a1);
 
@@ -28,6 +25,6 @@ CHIP PC {
 
     Mux16(a=a2, b[0..15]=false, sel=reset, out=a3);
 
-    Register(in=a3, load=registerLoad, out=out, out=loop);
+    Register(in=a3, load=true, out=out, out=loop);
 
 }
